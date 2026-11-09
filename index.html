@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="description" content="Esplora le categorie CAFANS con la guida iTaoBuy spreadsheet. Verifica i link dei venditori, confronta taglie e foto QC e stima il costo del pacco.">
+  <meta name="theme-color" content="#e8e3ff">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="iTaoBuy spreadsheet | Guida a link, taglie e foto QC">
+  <meta property="og:description" content="Un metodo per passare dalla ricerca per categoria alla verifica di variante, misure, foto e costo di spedizione.">
+  <title>iTaoBuy spreadsheet | Guida a link, taglie e foto QC</title>
+  <link rel="preconnect" href="https://www.nike.qa">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #271837;
+      --muted: #514460;
+      --paper: #faf8ff;
+      --lavender: #e8e3ff;
+      --line: #d9cfe9;
+      --lime: #e2f889;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 system-ui, sans-serif;
+    }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #6e3bd0; outline-offset: 4px; }
+    img { display: block; max-width: 100%; height: auto; }
+    figure, p, h1, h2, h3 { margin: 0; }
+    h1, h2, h3 { line-height: 1.1; overflow-wrap: anywhere; }
+    h1 { max-width: 14ch; font-size: clamp(2.8rem, 7vw, 5.75rem); letter-spacing: -.065em; }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.65rem); letter-spacing: -.045em; }
+    h3 { font-size: 1.3rem; }
+    .wrap { width: min(68rem, calc(100% - 2rem)); margin-inline: auto; }
+    .masthead { background: var(--lavender); border-bottom: 1px solid var(--line); }
+    .masthead .wrap, footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1.5rem;
+      padding-block: .85rem;
+    }
+    .brand { font-weight: 850; text-decoration: none; }
+    .label { font-size: .78rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .opening {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      grid-template-areas: "intro photo" "categories categories";
+      gap: 1rem;
+      padding-block: 1rem 2.75rem;
+    }
+    .intro {
+      grid-area: intro;
+      display: grid;
+      align-content: center;
+      justify-items: start;
+      gap: 1rem;
+      background: var(--lavender);
+      padding: clamp(1.25rem, 4vw, 3rem);
+      border-radius: 1.4rem;
+    }
+    .intro p:not(.label) { max-width: 47ch; }
+    .hero-photo {
+      grid-area: photo;
+      display: grid;
+      align-content: center;
+      background: #fff;
+      padding: .75rem;
+      border: 1px solid var(--line);
+      border-radius: 1.4rem;
+    }
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      border-radius: .85rem;
+      background: #f6f6f6;
+    }
+    figcaption { padding: .6rem .45rem .1rem; font-size: .86rem; color: var(--muted); }
+    .categories { grid-area: categories; padding-top: .4rem; }
+    .categories h2 { font-size: 1.45rem; margin-bottom: .7rem; }
+    .categories ul {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .45rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .categories a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .4rem;
+      min-height: 3.1rem;
+      height: 100%;
+      padding: .55rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: .55rem;
+      background: #fff;
+      font-size: .91rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .categories a:hover { background: var(--lime); }
+    .section { padding-block: 1.75rem 2.5rem; border-top: 1px solid var(--line); }
+    .section > p { margin-block: .7rem 1.1rem; max-width: 68ch; color: var(--muted); }
+    .articles, .gallery { display: grid; gap: .85rem; }
+    .articles { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1rem; }
+    .articles article { padding: 1.15rem; background: #fff; border: 1px solid var(--line); border-radius: .85rem; }
+    .articles p { margin-top: .65rem; }
+    .articles .label { display: inline-block; padding: .1rem .45rem; margin-bottom: .7rem; background: var(--lime); }
+    .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .gallery figure { background: #fff; padding: .5rem; border: 1px solid var(--line); border-radius: .85rem; }
+    .gallery img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #f6f6f6; border-radius: .5rem; }
+    details { border-bottom: 1px solid var(--line); }
+    details:first-of-type { margin-top: .75rem; }
+    summary { padding: .85rem .2rem; cursor: pointer; font-weight: 750; }
+    details p { max-width: 70ch; padding: 0 .2rem 1rem; }
+    footer { background: var(--ink); color: #fff; }
+    footer .wrap { padding-block: 1.4rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: .55rem .95rem;
+      background: var(--lime);
+      color: var(--ink);
+      border-radius: .5rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .button:hover { text-decoration: underline; }
+    @media (max-width: 52rem) {
+      .categories ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .articles { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 37rem) {
+      .opening { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "categories" "photo"; }
+      .categories ul, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "it",
+    "name": "iTaoBuy spreadsheet | Guida a link, taglie e foto QC",
+    "description": "Esplora le categorie CAFANS con la guida iTaoBuy spreadsheet. Verifica i link dei venditori, confronta taglie e foto QC e stima il costo del pacco.",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Cos'è un iTaoBuy spreadsheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "È un indice di prodotti che può raccogliere link a schede di venditori su piattaforme come Taobao, Weidian e 1688. Qui trovi una guida per verificare quei link e un accesso alle categorie CAFANS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come scelgo la taglia di una sneaker o di una felpa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Per le sneaker, misura entrambi i piedi e usa la misura maggiore per leggere la tabella del venditore. Per una felpa, confronta larghezza del torace, lunghezza e maniche con un capo che ti veste bene, misurato in piano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Le foto QC confermano l'autenticità?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le foto QC aiutano a verificare dettagli visibili come cuciture, etichette e finiture. Per valutare l'autenticità servono anche informazioni sulla provenienza e, se necessario, una verifica specialistica."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa faccio se un link prodotto è scaduto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cerca il codice articolo nella categoria corrispondente e apri una scheda attiva. Controlla di nuovo il venditore, la disponibilità della variante e le condizioni di reso."
+        }
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/yivla/">
+</head>
+<body>
+  <!-- Ricerca editoriale: accesso diretto alla SERP Google limitato (HTTP 429).
+       Dieci risultati della ricerca web consultati: rep.tools, itaobuy.co,
+       chinagrails.com, itaobuyspreadsheet.net, itaobuysheets.com, qcradar.com,
+       itaobuy.org, itaobuylists.com, itaobuyfind.org e itaobuywithqc.com.
+       Per ChinaGrails è stato consultato l'estratto indicizzato. -->
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="https://www.cafans.com">www.cafans.com</a>
+      <span class="label">Guida alla scelta</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="opening">
+      <div class="intro">
+        <p class="label">Dalla categoria alla scheda</p>
+        <h1>iTaoBuy spreadsheet</h1>
+        <p>Parti da scarpe, abbigliamento o accessori. Poi restringi la scelta confrontando la variante esatta, le misure in centimetri, le foto di controllo qualità (QC) e il costo totale del pacco.</p>
+      </div>
+
+      <nav class="categories" aria-labelledby="categorie">
+        <h2 id="categorie">Categorie CAFANS</h2>
+        <ul>
+          <li><a href="https://cafans.com/category-911-Shoes.html">Scarpe <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Felpe e maglioni <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-913-T-Shirts.html">T-shirt <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-914-Jackets.html">Giacche <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Pantaloni e shorts <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-916-Headwear.html">Copricapi <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-917-Sets.html">Completi <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Intimo <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-919-Jersey.html">Maglie sportive <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cafans.com/category-920-Accessories.html">Accessori <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </nav>
+
+      <figure class="hero-photo">
+        <img src="https://www.nike.qa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw651db905/nk/e6d/a/4/1/f/a/e6da41fa_1be4_4ce5_b89c_22be4f1f02d4.jpg?sh=720&amp;sm=fit&amp;sw=720"
+             srcset="https://www.nike.qa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw651db905/nk/e6d/a/4/1/f/a/e6da41fa_1be4_4ce5_b89c_22be4f1f02d4.jpg?sh=400&amp;sm=fit&amp;sw=400 400w,
+                     https://www.nike.qa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw651db905/nk/e6d/a/4/1/f/a/e6da41fa_1be4_4ce5_b89c_22be4f1f02d4.jpg?sh=720&amp;sm=fit&amp;sw=720 720w"
+             sizes="(max-width: 37rem) calc(100vw - 3.5rem), (max-width: 70rem) 40vw, 27rem"
+             width="720" height="720" fetchpriority="high" loading="eager" decoding="async"
+             alt="Profilo laterale di una Nike Air Force 1 ’07 bianca">
+        <figcaption>Nike Air Force 1 ’07 · Confronta il profilo della suola e la forma della punta tra foto scattate dalla stessa angolazione.</figcaption>
+      </figure>
+    </div>
+
+    <section class="section" aria-labelledby="guide">
+      <h2 id="guide">Tre controlli per valutare gli iTaoBuy finds</h2>
+      <div class="articles">
+        <article>
+          <p class="label">01 · Scheda</p>
+          <h3>Link iTaoBuy: ritrova la variante esatta</h3>
+          <p>Apri la scheda del venditore su Taobao, Weidian o 1688, quando il link originale è disponibile. Salva l’ID del prodotto e annota colore, taglia e quantità minima. Nelle inserzioni con più opzioni, controlla che la foto della variante corrisponda alla selezione.</p>
+        </article>
+        <article>
+          <p class="label">02 · Misure</p>
+          <h3>Foto QC iTaoBuy: abbinale alla scheda</h3>
+          <p>Confronta la foto della scheda, le immagini QC di riferimento e, se disponibili, le foto di magazzino del tuo articolo. Per le scarpe verifica il codice sull’etichetta e la misura della soletta interna. Per una T-shirt confronta larghezza del torace, lunghezza del capo e posizione della stampa.</p>
+        </article>
+        <article>
+          <p class="label">03 · Pacco</p>
+          <h3>Spedizione iTaoBuy: confronta il costo totale</h3>
+          <p>Considera il prezzo della variante, la consegna al magazzino, la spedizione internazionale e gli eventuali costi all’arrivo. Confronta peso reale e peso volumetrico secondo il metodo del vettore. Verifica la politica di reso prima di approvare la partenza del pacco.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="dettagli">
+      <h2 id="dettagli">Dalla foto alla misura giusta</h2>
+      <p>Quattro esempi visivi per capire quali dettagli chiedere al venditore prima di scegliere una variante.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-essential-cap--M5381M_PM2_Front%20view.png?hei=480&amp;wid=480&amp;fmt=jpeg"
+               width="480" height="480" loading="lazy" decoding="async"
+               alt="Cappellino Louis Vuitton Monogram Essential nero visto di fronte">
+          <figcaption><strong>Louis Vuitton.</strong> Misura la circonferenza della testa e verifica l’intervallo di regolazione del cappellino.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_600x600/1785343518/A009U9_XJH31_2064_006_100_0000_Light-printed-cotton-jersey-t-shirt.jpg"
+               width="600" height="600" loading="lazy" decoding="async"
+               alt="T-shirt Gucci in jersey beige e marrone con motivo GG">
+          <figcaption><strong>Gucci.</strong> Per confrontare due magliette, misura entrambe da spalla a spalla, in piano.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://imissyouvintage.com/cdn/shop/products/hermesclicblack2_480x.jpg?v=1604068482"
+               width="480" height="481" loading="lazy" decoding="async"
+               alt="Bracciale Hermès Clic H in smalto nero e metallo dorato">
+          <figcaption><strong>Hermès.</strong> Confronta la circonferenza del polso con quella interna del bracciale e controlla il tipo di chiusura.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/N2241WOMCYD03S_SBG_E01-2?%24r9x10_raw%24=&amp;crop=0%2C0%2C4000%2C5000&amp;hei=520&amp;scale=1&amp;wid=480"
+               width="480" height="520" loading="lazy" decoding="async"
+               alt="Collana Dior Petit CD dorata con motivo CD e cristalli">
+          <figcaption><strong>Dior.</strong> Verifica la lunghezza della collana, le posizioni del fermaglio e il materiale indicato nella scheda.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq">
+      <h2 id="faq">Domande frequenti</h2>
+      <details open>
+        <summary>Cos'è un iTaoBuy spreadsheet?</summary>
+        <p>È un indice di prodotti che può raccogliere link a schede di venditori su piattaforme come Taobao, Weidian e 1688. Qui trovi una guida per verificare quei link e un accesso alle categorie CAFANS.</p>
+      </details>
+      <details>
+        <summary>Come scelgo la taglia di una sneaker o di una felpa?</summary>
+        <p>Per le sneaker, misura entrambi i piedi e usa la misura maggiore per leggere la tabella del venditore. Per una felpa, confronta larghezza del torace, lunghezza e maniche con un capo che ti veste bene, misurato in piano.</p>
+      </details>
+      <details>
+        <summary>Le foto QC confermano l'autenticità?</summary>
+        <p>Le foto QC aiutano a verificare dettagli visibili come cuciture, etichette e finiture. Per valutare l'autenticità servono anche informazioni sulla provenienza e, se necessario, una verifica specialistica.</p>
+      </details>
+      <details>
+        <summary>Cosa faccio se un link prodotto è scaduto?</summary>
+        <p>Cerca il codice articolo nella categoria corrispondente e apri una scheda attiva. Controlla di nuovo il venditore, la disponibilità della variante e le condizioni di reso.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Guida editoriale indipendente. Le immagini illustrano i modelli citati.</p>
+      <a class="button" href="https://www.cafans.com">Esplora CAFANS</a>
+    </div>
+  </footer>
+</body>
+</html>
